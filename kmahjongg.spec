@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kmahjongg
-Version  : 19.04.3
-Release  : 9
-URL      : https://download.kde.org/stable/applications/19.04.3/src/kmahjongg-19.04.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.3/src/kmahjongg-19.04.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.3/src/kmahjongg-19.04.3.tar.xz.sig
+Version  : 19.08.0
+Release  : 10
+URL      : https://download.kde.org/stable/applications/19.08.0/src/kmahjongg-19.08.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.0/src/kmahjongg-19.08.0.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.0/src/kmahjongg-19.08.0.tar.xz.sig
 Summary  : A tile matching game for one or two players
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -69,16 +69,17 @@ locales components for the kmahjongg package.
 
 
 %prep
-%setup -q -n kmahjongg-19.04.3
+%setup -q -n kmahjongg-19.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562874591
+export SOURCE_DATE_EPOCH=1565902908
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -92,7 +93,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1562874591
+export SOURCE_DATE_EPOCH=1565902908
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kmahjongg
 cp COPYING %{buildroot}/usr/share/package-licenses/kmahjongg/COPYING
@@ -266,7 +267,7 @@ popd
 /usr/share/kmahjongg/layouts/well.layout
 /usr/share/kxmlgui5/kmahjongg/kmahjonggui.rc
 /usr/share/metainfo/org.kde.kmahjongg.appdata.xml
-/usr/share/xdg/kmahjongg.categories
+/usr/share/qlogging-categories5/kmahjongg.categories
 
 %files doc
 %defattr(0644,root,root,0755)
